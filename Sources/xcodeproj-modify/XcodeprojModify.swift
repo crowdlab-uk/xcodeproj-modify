@@ -1,6 +1,6 @@
 import Foundation
 import PathKit
-import XcodeProj
+import xcodeproj
 
 struct XcodeprojModify {
     enum Error: LocalizedError {
@@ -43,11 +43,11 @@ struct XcodeprojModify {
     private func runCommand(_ command: Command, with arguments: Arguments) throws {
         switch command {
         case .addRunScriptPhase(let target, let position, let name, let contents):
-            try addRunScriptPhase(xcodeprojPath: arguments.xcodeprojPath, target: target, position: position, name: name, contents: contents)
+            try addRunScriptPhase(target: target, position: position, name: name, contents: contents, xcodeprojPath: arguments.xcodeprojPath)
         }
     }
     
-    private func addRunScriptPhase(xcodeprojPath: String, target: String, position: Int, name: String, contents: String) throws {
+    private func addRunScriptPhase(target: String, position: Int, name: String, contents: String, xcodeprojPath: String) throws {
         let path = Path(xcodeprojPath)
         let xcodeproj = try XcodeProj(path: path)
         let targets = xcodeproj.pbxproj.targets(named: target)
@@ -64,7 +64,7 @@ struct XcodeprojModify {
             if position < 0 {
                 buildPhases.append(phase)
             } else {
-                guard position <= buildPhases.count else {
+                guard position < buildPhases.count else {
                     throw Error.invalidPosition(position)
                 }
                 buildPhases.insert(phase, at: position)

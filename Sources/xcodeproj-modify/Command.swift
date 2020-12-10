@@ -1,5 +1,5 @@
 import Foundation
 
 enum Command {
-    case addRunScriptPhase(target: String, contents: String)
+    case addRunScriptPhase(target: String, position: Int, name: String, contents: String)
 }

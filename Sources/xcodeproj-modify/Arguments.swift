@@ -9,6 +9,8 @@ struct Arguments {
         case missingCommand
         case unknownCommand(String)
         case missingTarget
+        case missingName
+        case missingPosition
         case missingContents
         
         var errorDescription: String? {
@@ -21,6 +23,10 @@ struct Arguments {
                 return "Unknown command: \(command)"
             case .missingTarget:
                 return "Please specify a target as the first argument after add-run-script-phase"
+            case .missingPosition:
+                return "Please specify the position the build script shall be injected at"
+            case .missingName:
+                return "Please specify a build phase name"
             case .missingContents:
                 return "Please specify shell script contents as the second argument after add-run-script-phase"
             }
@@ -50,10 +56,16 @@ struct Arguments {
             guard let target = iterator.next() else {
                 throw Error.missingTarget
             }
+            guard let position = Int(iterator.next() ?? "-1") else {
+                throw Error.missingPosition
+            }
+            guard let name = iterator.next() else {
+                throw Error.missingName
+            }
             guard let contents = iterator.next() else {
                 throw Error.missingContents
             }
-            return Command.addRunScriptPhase(target: target, contents: contents)
+            return Command.addRunScriptPhase(target: target, position: position, name: name, contents: contents)
         
         default:
             throw Error.unknownCommand(commandName)

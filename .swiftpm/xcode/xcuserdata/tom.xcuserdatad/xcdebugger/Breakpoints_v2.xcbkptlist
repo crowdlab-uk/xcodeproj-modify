@@ -14,8 +14,72 @@
             filePath = "Sources/xcodeproj-modify/XcodeprojModify.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "addRunScriptPhase(xcodeprojPath:target:position:name:contents:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DF6B4A3B-601A-4D67-B6C2-49286C32C05A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/xcodeproj-modify/XcodeprojModify.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "addRunScriptPhase(xcodeprojPath:target:position:name:contents:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DF6B4A3B-601A-4D67-B6C2-49286C32C05A - 23a096f4e6ef2c5d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "xcodeproj_modify.XcodeprojModify.(addRunScriptPhase in _C24A52983D0DC3CD792B6DA79204D9D2)(xcodeprojPath: Swift.String, target: Swift.String, position: Swift.Int, name: Swift.String, contents: Swift.String) throws -&gt; ()"
+                  moduleName = "xcodeproj-modify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tom/Developer/xcodeproj-modify/Sources/xcodeproj-modify/XcodeprojModify.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "1256">
+               </Location>
+               <Location
+                  uuid = "DF6B4A3B-601A-4D67-B6C2-49286C32C05A - 689a41b90067d488"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (xcodeproj.PBXBuildPhase) -&gt; Swift.Bool in xcodeproj_modify.XcodeprojModify.(addRunScriptPhase in _C24A52983D0DC3CD792B6DA79204D9D2)(xcodeprojPath: Swift.String, target: Swift.String, position: Swift.Int, name: Swift.String, contents: Swift.String) throws -&gt; ()"
+                  moduleName = "xcodeproj-modify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tom/Developer/xcodeproj-modify/Sources/xcodeproj-modify/XcodeprojModify.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "92">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "44381917-1317-454D-B83C-3F00299BA6F2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/xcodeproj-modify/XcodeprojModify.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "addRunScriptPhase(xcodeprojPath:target:position:name:contents:)"
             landmarkType = "7">
          </BreakpointContent>

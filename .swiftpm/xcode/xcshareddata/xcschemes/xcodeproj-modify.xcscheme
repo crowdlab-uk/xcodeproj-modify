@@ -96,10 +96,17 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "&quot;commant text&quot;"
+            argument = "&quot;# SENTRY_FRAMEWORK_PATCH &#10;echo \&quot;warning: patching framework - set SENTRY_SKIP_FRAMEWORK_PATCH=true to skip this\&quot;&#10;if [ -n \&quot;\$SENTRY_SKIP_FRAMEWORK_PATCH\&quot; ]; then&#10;  echo \&quot;warning: skipping framework patch\&quot;&#10;  exit 0&#10;fi&#10;APP_PATH=\&quot;\${TARGET_BUILD_DIR}/\${WRAPPER_NAME}\&quot;&#10;find \&quot;\$APP_PATH\&quot; -name &apos;Sentry*.framework&apos; -type d | while read -r FRAMEWORK&#10;do&#10;FRAMEWORK_EXECUTABLE_NAME=\$(defaults read \&quot;\$FRAMEWORK/Info.plist\&quot; CFBundleExecutable)&#10;FRAMEWORK_EXECUTABLE_PATH=\&quot;\$FRAMEWORK/\$FRAMEWORK_EXECUTABLE_NAME\&quot;&#10;echo \&quot;Executable is \$FRAMEWORK_EXECUTABLE_PATH\&quot;&#10;EXTRACTED_ARCHS=()&#10;for ARCH in \$ARCHS&#10;do&#10;echo \&quot;Extracting \$ARCH from \$FRAMEWORK_EXECUTABLE_NAME\&quot;&#10;lipo -extract \&quot;\$ARCH\&quot; \&quot;\$FRAMEWORK_EXECUTABLE_PATH\&quot; -o \&quot;\$FRAMEWORK_EXECUTABLE_PATH-\$ARCH\&quot;&#10;EXTRACTED_ARCHS+=(\&quot;\$FRAMEWORK_EXECUTABLE_PATH-\$ARCH\&quot;)&#10;done&#10;echo \&quot;Merging extracted architectures: \${ARCHS}\&quot;&#10;lipo -o \&quot;\$FRAMEWORK_EXECUTABLE_PATH-merged\&quot; -create \&quot;\${EXTRACTED_ARCHS[@]}\&quot;&#10;rm \&quot;\${EXTRACTED_ARCHS[@]}\&quot;&#10;echo \&quot;Replacing original executable with thinned version\&quot;&#10;rm \&quot;\$FRAMEWORK_EXECUTABLE_PATH\&quot;&#10;mv \&quot;\$FRAMEWORK_EXECUTABLE_PATH-merged\&quot; \&quot;\$FRAMEWORK_EXECUTABLE_PATH\&quot;&#10;done&#10;&quot;;"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "STRIP_SENTRY"
+            value = "&quot;# SENTRY_FRAMEWORK_PATCH &#10;echo \&quot;warning: patching framework - set SENTRY_SKIP_FRAMEWORK_PATCH=true to skip this\&quot;&#10;if [ -n \&quot;\$SENTRY_SKIP_FRAMEWORK_PATCH\&quot; ]; then&#10;  echo \&quot;warning: skipping framework patch\&quot;&#10;  exit 0&#10;fi&#10;APP_PATH=\&quot;\${TARGET_BUILD_DIR}/\${WRAPPER_NAME}\&quot;&#10;find \&quot;\$APP_PATH\&quot; -name &apos;Sentry*.framework&apos; -type d | while read -r FRAMEWORK&#10;do&#10;FRAMEWORK_EXECUTABLE_NAME=\$(defaults read \&quot;\$FRAMEWORK/Info.plist\&quot; CFBundleExecutable)&#10;FRAMEWORK_EXECUTABLE_PATH=\&quot;\$FRAMEWORK/\$FRAMEWORK_EXECUTABLE_NAME\&quot;&#10;echo \&quot;Executable is \$FRAMEWORK_EXECUTABLE_PATH\&quot;&#10;EXTRACTED_ARCHS=()&#10;for ARCH in \$ARCHS&#10;do&#10;echo \&quot;Extracting \$ARCH from \$FRAMEWORK_EXECUTABLE_NAME\&quot;&#10;lipo -extract \&quot;\$ARCH\&quot; \&quot;\$FRAMEWORK_EXECUTABLE_PATH\&quot; -o \&quot;\$FRAMEWORK_EXECUTABLE_PATH-\$ARCH\&quot;&#10;EXTRACTED_ARCHS+=(\&quot;\$FRAMEWORK_EXECUTABLE_PATH-\$ARCH\&quot;)&#10;done&#10;echo \&quot;Merging extracted architectures: \${ARCHS}\&quot;&#10;lipo -o \&quot;\$FRAMEWORK_EXECUTABLE_PATH-merged\&quot; -create \&quot;\${EXTRACTED_ARCHS[@]}\&quot;&#10;rm \&quot;\${EXTRACTED_ARCHS[@]}\&quot;&#10;echo \&quot;Replacing original executable with thinned version\&quot;&#10;rm \&quot;\$FRAMEWORK_EXECUTABLE_PATH\&quot;&#10;mv \&quot;\$FRAMEWORK_EXECUTABLE_PATH-merged\&quot; \&quot;\$FRAMEWORK_EXECUTABLE_PATH\&quot;&#10;done&#10;&quot;;"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

@@ -28,6 +28,7 @@ struct XcodeprojModify {
             let arguments = try Arguments(self.arguments)
             try run(with: arguments)
         } catch {
+            print(error)
             print(error.localizedDescription)
             return 1
         }
@@ -64,7 +65,7 @@ struct XcodeprojModify {
             if position < 0 {
                 buildPhases.append(phase)
             } else {
-                if position <= buildPhases.count {
+                if position < buildPhases.count {
                   buildPhases.insert(phase, at: position)
                 } else {
                   buildPhases.append(phase)

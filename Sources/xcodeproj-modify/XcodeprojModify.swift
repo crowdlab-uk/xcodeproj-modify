@@ -43,11 +43,11 @@ struct XcodeprojModify {
     private func runCommand(_ command: Command, with arguments: Arguments) throws {
         switch command {
         case .addRunScriptPhase(let target, let position, let name, let contents):
-            try addRunScriptPhase(target: target, position: position, name: name, contents: contents, xcodeprojPath: arguments.xcodeprojPath)
+            try addRunScriptPhase(xcodeprojPath: arguments.xcodeprojPath, target: target, position: position, name: name, contents: contents)
         }
     }
     
-    private func addRunScriptPhase(target: String, position: Int, name: String, contents: String, xcodeprojPath: String) throws {
+    private func addRunScriptPhase(xcodeprojPath: String, target: String, position: Int, name: String, contents: String) throws {
         let path = Path(xcodeprojPath)
         let xcodeproj = try XcodeProj(path: path)
         let targets = xcodeproj.pbxproj.targets(named: target)

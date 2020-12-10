@@ -37,17 +37,20 @@ struct Arguments {
 
     init(_ arguments: [String]) throws {
         var iterator = arguments.dropFirst().makeIterator()
-        
-        guard let path = iterator.next() else {
-            throw Error.missingXcodeprojPath
-        }
-        xcodeprojPath = path
-        
-        guard let commandName = iterator.next() else {
-            throw Error.missingCommand
-        }
-        let command = try Arguments.parseCommand(named: commandName, from: &iterator)
-        commands = [command]
+      
+      guard let commandName = iterator.next() else {
+          throw Error.missingCommand
+      }
+      
+      guard let path = iterator.next() else {
+          throw Error.missingXcodeprojPath
+      }
+      xcodeprojPath = path
+
+      let command = try Arguments.parseCommand(named: commandName, from: &iterator)
+      commands = [command]
+      
+
     }
     
     private static func parseCommand(named commandName: String, from iterator: inout TokenIterator) throws -> Command {

@@ -64,13 +64,13 @@ struct XcodeprojModify {
             if position < 0 {
                 buildPhases.append(phase)
             } else {
-                guard position <= buildPhases.count else {
-                    throw Error.invalidPosition(position)
+                if position <= buildPhases.count {
+                  buildPhases.insert(phase, at: position)
+                } else {
+                  buildPhases.append(phase)
                 }
-                buildPhases.insert(phase, at: position)
             }
             target.buildPhases = buildPhases
-            print("Added build phase")
         }
         xcodeproj.pbxproj.add(object: phase)
         try xcodeproj.writePBXProj(
@@ -78,6 +78,5 @@ struct XcodeprojModify {
             override: true,
             outputSettings: PBXOutputSettings()
         )
-        print("Successfully wrote data")
     }
 }
